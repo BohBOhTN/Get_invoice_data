@@ -4,7 +4,7 @@ import pandas as pd
 
         
 url = 'https://app.nanonets.com/api/v2/OCR/Model/b3b24599-459e-494e-88b1-ac6bf24047c8/LabelFile/?async=false'
-image_path = './ProjetKhouloud/images/facture2.png'
+image_path = './images/facture2.png'
 data = {'file': open(image_path, 'rb')}
 
 response = requests.post(url, auth=requests.auth.HTTPBasicAuth('a6e29951-c187-11ed-88ba-4eb78123d082', ''), files=data)

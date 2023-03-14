@@ -2,13 +2,14 @@ import requests
 import json
 import pandas as pd
 
-url = 'https://app.nanonets.com/api/v2/OCR/Model/4da819e1-4fa1-43a9-81a9-163125265bca/LabelFile/?async=false'
+        
+url = 'https://app.nanonets.com/api/v2/OCR/Model/b3b24599-459e-494e-88b1-ac6bf24047c8/LabelFile/?async=false'
+image_path = './ProjetKhouloud/images/facture2.png'
+data = {'file': open(image_path, 'rb')}
 
-data = {'file': open('./ProjetKhouloud/images/facture2.png', 'rb')}
+response = requests.post(url, auth=requests.auth.HTTPBasicAuth('a6e29951-c187-11ed-88ba-4eb78123d082', ''), files=data)
 
-response = requests.post(url, auth=requests.auth.HTTPBasicAuth('51d0a0da-ba9d-11ed-a27e-22a1d9fde453', ''), files=data)
-
-data = response.text
+data =response.text
 parse_json = json.loads(data)
 list_predictions = parse_json['result'][0]['prediction']
 #print(list_predictions)
